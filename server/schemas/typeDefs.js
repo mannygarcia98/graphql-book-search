@@ -26,16 +26,27 @@ const typeDefs = gql`
   }
 
   type Query {
-    me: [User]
+    me: User
+  }
+
+  input saveBook {
+    authors: [String]
+    description: String
+    title: String
+    bookId: String
+    image: String
+    link: String
   }
 
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    saveBook(input: saveBook): User
     removeBook(bookId: String): User
   }
 `;
 
+// may need to add ! for input type but will try without it
 // saveBook(authors: [String]!, description: String!, title: String!, bookId:  )
 // export the typeDefs
 module.exports = typeDefs;
